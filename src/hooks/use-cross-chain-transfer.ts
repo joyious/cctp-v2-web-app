@@ -18,7 +18,13 @@ import {
 } from "viem";
 import { privateKeyToAccount, nonceManager } from "viem/accounts";
 import axios from "axios";
-import { sepolia, avalancheFuji, baseSepolia } from "viem/chains";
+import {
+  sepolia,
+  avalancheFuji,
+  baseSepolia,
+  arbitrumSepolia,
+  sonicBlazeTestnet,
+} from "viem/chains";
 import {
   SupportedChainId,
   CHAIN_IDS_TO_USDC_ADDRESSES,
@@ -40,6 +46,8 @@ const chains = {
   [SupportedChainId.ETH_SEPOLIA]: sepolia,
   [SupportedChainId.AVAX_FUJI]: avalancheFuji,
   [SupportedChainId.BASE_SEPOLIA]: baseSepolia,
+  [SupportedChainId.ARB_SEPOLIA]: arbitrumSepolia,
+  [SupportedChainId.SONIC_BLAZE]: sonicBlazeTestnet,
 };
 
 export function useCrossChainTransfer() {
@@ -100,7 +108,7 @@ export function useCrossChainTransfer() {
 
   const approveUSDC = async (
     client: WalletClient<HttpTransport, Chain, Account>,
-    sourceChainId: number
+    sourceChainId: number,
   ) => {
     setCurrentStep("approving");
     addLog("Approving USDC transfer...");
@@ -140,7 +148,7 @@ export function useCrossChainTransfer() {
     amount: bigint,
     destinationChainId: number,
     destinationAddress: string,
-    transferType: "fast" | "standard"
+    transferType: "fast" | "standard",
   ) => {
     setCurrentStep("burning");
     addLog("Burning USDC...");
@@ -165,7 +173,7 @@ export function useCrossChainTransfer() {
                 { name: "destinationDomain", type: "uint32" },
                 { name: "mintRecipient", type: "bytes32" },
                 { name: "burnToken", type: "address" },
-                { name: "hookData", type: "bytes32" },
+                { name: "destinationCaller", type: "bytes32" },
                 { name: "maxFee", type: "uint256" },
                 { name: "finalityThreshold", type: "uint32" },
               ],
@@ -195,7 +203,7 @@ export function useCrossChainTransfer() {
 
   const retrieveAttestation = async (
     transactionHash: string,
-    sourceChainId: number
+    sourceChainId: number,
   ) => {
     setCurrentStep("waiting-attestation");
     addLog("Retrieving attestation...");
@@ -225,7 +233,7 @@ export function useCrossChainTransfer() {
   const mintUSDC = async (
     client: WalletClient<HttpTransport, Chain, Account>,
     destinationChainId: number,
-    attestation: any
+    attestation: any,
   ) => {
     const MAX_RETRIES = 3;
     let retries = 0;
@@ -263,7 +271,7 @@ export function useCrossChainTransfer() {
         });
 
         // Add 20% buffer to gas estimate
-        const gasWithBuffer = (gasEstimate * 120n) / 100n;
+        const gasWithBuffer = (gasEstimate * 150n) / 100n;
         addLog(`Gas Used: ${formatUnits(gasWithBuffer, 9)} Gwei`);
 
         const tx = await client.sendTransaction({
@@ -298,7 +306,7 @@ export function useCrossChainTransfer() {
     sourceChainId: number,
     destinationChainId: number,
     amount: string,
-    transferType: "fast" | "standard"
+    transferType: "fast" | "standard",
   ) => {
     try {
       const numericAmount = parseUnits(amount, DEFAULT_DECIMALS);
@@ -321,7 +329,7 @@ export function useCrossChainTransfer() {
         numericAmount,
         destinationChainId,
         defaultDestination,
-        transferType
+        transferType,
       );
       const attestation = await retrieveAttestation(burnTx, sourceChainId);
       const minBalance = parseEther("0.01"); // 0.01 native token
@@ -333,7 +341,7 @@ export function useCrossChainTransfer() {
     } catch (error) {
       setCurrentStep("error");
       addLog(
-        `Error: ${error instanceof Error ? error.message : "Unknown error"}`
+        `Error: ${error instanceof Error ? error.message : "Unknown error"}`,
       );
     }
   };
