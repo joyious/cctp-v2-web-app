@@ -22,8 +22,9 @@ import {
   sepolia,
   avalancheFuji,
   baseSepolia,
-  arbitrumSepolia,
   sonicBlazeTestnet,
+  lineaSepolia,
+  arbitrumSepolia,
 } from "viem/chains";
 import {
   SupportedChainId,
@@ -46,8 +47,9 @@ const chains = {
   [SupportedChainId.ETH_SEPOLIA]: sepolia,
   [SupportedChainId.AVAX_FUJI]: avalancheFuji,
   [SupportedChainId.BASE_SEPOLIA]: baseSepolia,
-  [SupportedChainId.ARB_SEPOLIA]: arbitrumSepolia,
   [SupportedChainId.SONIC_BLAZE]: sonicBlazeTestnet,
+  [SupportedChainId.LINEA_SEPOLIA]: lineaSepolia,
+  [SupportedChainId.ARBITRUM_SEPOLIA]: arbitrumSepolia,
 };
 
 export function useCrossChainTransfer() {
@@ -109,7 +111,6 @@ export function useCrossChainTransfer() {
   const approveUSDC = async (
     client: WalletClient<HttpTransport, Chain, Account>,
     sourceChainId: number,
-    amount: bigint,
   ) => {
     setCurrentStep("approving");
     addLog("Approving USDC transfer...");
@@ -131,7 +132,7 @@ export function useCrossChainTransfer() {
             },
           ],
           functionName: "approve",
-          args: [CHAIN_IDS_TO_TOKEN_MESSENGER[sourceChainId], amount],
+          args: [CHAIN_IDS_TO_TOKEN_MESSENGER[sourceChainId], 10000000000n],
         }),
       });
 
@@ -174,7 +175,7 @@ export function useCrossChainTransfer() {
                 { name: "destinationDomain", type: "uint32" },
                 { name: "mintRecipient", type: "bytes32" },
                 { name: "burnToken", type: "address" },
-                { name: "destinationCaller", type: "bytes32" },
+                { name: "hookData", type: "bytes32" },
                 { name: "maxFee", type: "uint256" },
                 { name: "finalityThreshold", type: "uint32" },
               ],
@@ -272,7 +273,7 @@ export function useCrossChainTransfer() {
         });
 
         // Add 20% buffer to gas estimate
-        const gasWithBuffer = (gasEstimate * 150n) / 100n;
+        const gasWithBuffer = (gasEstimate * 120n) / 100n;
         addLog(`Gas Used: ${formatUnits(gasWithBuffer, 9)} Gwei`);
 
         const tx = await client.sendTransaction({
@@ -323,7 +324,7 @@ export function useCrossChainTransfer() {
         return balance;
       };
 
-      await approveUSDC(sourceClient, sourceChainId, numericAmount);
+      await approveUSDC(sourceClient, sourceChainId);
       const burnTx = await burnUSDC(
         sourceClient,
         sourceChainId,
