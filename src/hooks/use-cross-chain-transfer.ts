@@ -25,7 +25,10 @@ import {
   sonicBlazeTestnet,
   lineaSepolia,
   arbitrumSepolia,
+  worldchainSepolia,
+  optimismSepolia,
 } from "viem/chains";
+import { defineChain } from "viem";
 import {
   SupportedChainId,
   CHAIN_IDS_TO_USDC_ADDRESSES,
@@ -33,6 +36,29 @@ import {
   CHAIN_IDS_TO_MESSAGE_TRANSMITTER,
   DESTINATION_DOMAINS,
 } from "@/lib/chains";
+
+// Custom Codex chain definition with Thirdweb RPC
+const codexTestnet = defineChain({
+  id: 812242,
+  name: "Codex Testnet",
+  nativeCurrency: {
+    decimals: 18,
+    name: "Codex",
+    symbol: "CDX",
+  },
+  rpcUrls: {
+    default: {
+      http: ["https://812242.rpc.thirdweb.com"],
+    },
+  },
+  blockExplorers: {
+    default: {
+      name: "Codex Explorer",
+      url: "https://codex.blockscout.com",
+    },
+  },
+  testnet: true,
+});
 
 export type TransferStep =
   | "idle"
@@ -50,6 +76,9 @@ const chains = {
   [SupportedChainId.SONIC_BLAZE]: sonicBlazeTestnet,
   [SupportedChainId.LINEA_SEPOLIA]: lineaSepolia,
   [SupportedChainId.ARBITRUM_SEPOLIA]: arbitrumSepolia,
+  [SupportedChainId.WORLDCHAIN_SEPOLIA]: worldchainSepolia,
+  [SupportedChainId.OPTIMISM_SEPOLIA]: optimismSepolia,
+  [SupportedChainId.CODEX_TESTNET]: codexTestnet,
 };
 
 export function useCrossChainTransfer() {

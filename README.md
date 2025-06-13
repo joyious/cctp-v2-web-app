@@ -7,6 +7,9 @@ This sample application demonstrates Cross-Chain Transfer Protocol (CCTP) step-b
 - Linea Sepolia
 - Arbitrum Sepolia
 - Sonic Blaze
+- Worldchain Sepolia
+- Optimism Sepolia
+- Codex Testnet
 
 ## Environment Setup
 
