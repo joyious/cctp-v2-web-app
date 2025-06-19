@@ -9,7 +9,7 @@ export enum SupportedChainId {
   ARBITRUM_SEPOLIA = 421614,
   WORLDCHAIN_SEPOLIA = 4801,
   OPTIMISM_SEPOLIA = 11155420,
-  CODEX_TESTNET = 812242,
+  SOLANA_DEVNET = 103,
 }
 
 export const DEFAULT_MAX_FEE = 1000n;
@@ -24,10 +24,10 @@ export const CHAIN_TO_CHAIN_NAME: Record<number, string> = {
   [SupportedChainId.ARBITRUM_SEPOLIA]: "Arbitrum Sepolia",
   [SupportedChainId.WORLDCHAIN_SEPOLIA]: "Worldchain Sepolia",
   [SupportedChainId.OPTIMISM_SEPOLIA]: "Optimism Sepolia",
-  [SupportedChainId.CODEX_TESTNET]: "Codex Testnet",
+  [SupportedChainId.SOLANA_DEVNET]: "Solana Devnet",
 };
 
-export const CHAIN_IDS_TO_USDC_ADDRESSES: Record<number, Hex> = {
+export const CHAIN_IDS_TO_USDC_ADDRESSES: Record<number, Hex | string> = {
   [SupportedChainId.ETH_SEPOLIA]: "0x1c7d4b196cb0c7b01d743fbc6116a902379c7238",
   [SupportedChainId.AVAX_FUJI]: "0x5425890298aed601595a70AB815c96711a31Bc65",
   [SupportedChainId.BASE_SEPOLIA]: "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
@@ -40,11 +40,11 @@ export const CHAIN_IDS_TO_USDC_ADDRESSES: Record<number, Hex> = {
     "0x66145f38cBAC35Ca6F1Dfb4914dF98F1614aeA88",
   [SupportedChainId.OPTIMISM_SEPOLIA]:
     "0x5fd84259d66Cd46123540766Be93DFE6D43130D7",
-  [SupportedChainId.CODEX_TESTNET]:
-    "0x6d7f141b6819C2c9CC2f818e6ad549E7Ca090F8f",
+  [SupportedChainId.SOLANA_DEVNET]:
+    "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
 };
 
-export const CHAIN_IDS_TO_TOKEN_MESSENGER: Record<number, Hex> = {
+export const CHAIN_IDS_TO_TOKEN_MESSENGER: Record<number, Hex | string> = {
   [SupportedChainId.ETH_SEPOLIA]: "0x8fe6b999dc680ccfdd5bf7eb0974218be2542daa",
   [SupportedChainId.AVAX_FUJI]: "0x8fe6b999dc680ccfdd5bf7eb0974218be2542daa",
   [SupportedChainId.BASE_SEPOLIA]: "0x8fe6b999dc680ccfdd5bf7eb0974218be2542daa",
@@ -57,11 +57,11 @@ export const CHAIN_IDS_TO_TOKEN_MESSENGER: Record<number, Hex> = {
     "0x8fe6b999dc680ccfdd5bf7eb0974218be2542daa",
   [SupportedChainId.OPTIMISM_SEPOLIA]:
     "0x8fe6b999dc680ccfdd5bf7eb0974218be2542daa",
-  [SupportedChainId.CODEX_TESTNET]:
-    "0x8fe6b999dc680ccfdd5bf7eb0974218be2542daa",
+  [SupportedChainId.SOLANA_DEVNET]:
+    "CCTPV2vPZJS2u2BBsUoscuikbYjnpFmbFsvVuJdgUMQe",
 };
 
-export const CHAIN_IDS_TO_MESSAGE_TRANSMITTER: Record<number, Hex> = {
+export const CHAIN_IDS_TO_MESSAGE_TRANSMITTER: Record<number, Hex | string> = {
   [SupportedChainId.ETH_SEPOLIA]: "0xe737e5cebeeba77efe34d4aa090756590b1ce275",
   [SupportedChainId.AVAX_FUJI]: "0xe737e5cebeeba77efe34d4aa090756590b1ce275",
   [SupportedChainId.BASE_SEPOLIA]: "0xe737e5cebeeba77efe34d4aa090756590b1ce275",
@@ -74,8 +74,8 @@ export const CHAIN_IDS_TO_MESSAGE_TRANSMITTER: Record<number, Hex> = {
     "0xe737e5cebeeba77efe34d4aa090756590b1ce275",
   [SupportedChainId.OPTIMISM_SEPOLIA]:
     "0xe737e5cebeeba77efe34d4aa090756590b1ce275",
-  [SupportedChainId.CODEX_TESTNET]:
-    "0xe737e5cebeeba77efe34d4aa090756590b1ce275",
+  [SupportedChainId.SOLANA_DEVNET]:
+    "CCTPV2Sm4AdWt5296sk4P66VBZ7bEhcARwFaaS9YPbeC",
 };
 
 export const DESTINATION_DOMAINS: Record<number, number> = {
@@ -87,7 +87,7 @@ export const DESTINATION_DOMAINS: Record<number, number> = {
   [SupportedChainId.ARBITRUM_SEPOLIA]: 3,
   [SupportedChainId.WORLDCHAIN_SEPOLIA]: 14,
   [SupportedChainId.OPTIMISM_SEPOLIA]: 2,
-  [SupportedChainId.CODEX_TESTNET]: 12,
+  [SupportedChainId.SOLANA_DEVNET]: 5,
 };
 
 export const SUPPORTED_CHAINS = [
@@ -99,5 +99,12 @@ export const SUPPORTED_CHAINS = [
   SupportedChainId.ARBITRUM_SEPOLIA,
   SupportedChainId.WORLDCHAIN_SEPOLIA,
   SupportedChainId.OPTIMISM_SEPOLIA,
-  SupportedChainId.CODEX_TESTNET,
+  SupportedChainId.SOLANA_DEVNET,
 ];
+
+// Solana RPC endpoint
+export const SOLANA_RPC_ENDPOINT = "https://api.devnet.solana.com";
+
+// IRIS API URL for CCTP attestations (testnet)
+export const IRIS_API_URL =
+  process.env.IRIS_API_URL ?? "https://iris-api-sandbox.circle.com";
