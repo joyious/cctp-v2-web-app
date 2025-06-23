@@ -81,7 +81,7 @@ const codexTestnet = defineChain({
   blockExplorers: {
     default: {
       name: "Codex Explorer",
-      url: "https://codex.blockscout.com",
+      url: "https://explorer.codex-stg.xyz/",
     },
   },
   testnet: true,
