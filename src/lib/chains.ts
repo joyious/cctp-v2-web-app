@@ -10,6 +10,7 @@ export enum SupportedChainId {
   WORLDCHAIN_SEPOLIA = 4801,
   OPTIMISM_SEPOLIA = 11155420,
   SOLANA_DEVNET = 103,
+  CODEX_TESTNET = 812242,
 }
 
 export const DEFAULT_MAX_FEE = 1000n;
@@ -25,6 +26,7 @@ export const CHAIN_TO_CHAIN_NAME: Record<number, string> = {
   [SupportedChainId.WORLDCHAIN_SEPOLIA]: "Worldchain Sepolia",
   [SupportedChainId.OPTIMISM_SEPOLIA]: "Optimism Sepolia",
   [SupportedChainId.SOLANA_DEVNET]: "Solana Devnet",
+  [SupportedChainId.CODEX_TESTNET]: "Codex Testnet",
 };
 
 export const CHAIN_IDS_TO_USDC_ADDRESSES: Record<number, Hex | string> = {
@@ -42,6 +44,8 @@ export const CHAIN_IDS_TO_USDC_ADDRESSES: Record<number, Hex | string> = {
     "0x5fd84259d66Cd46123540766Be93DFE6D43130D7",
   [SupportedChainId.SOLANA_DEVNET]:
     "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+  [SupportedChainId.CODEX_TESTNET]:
+    "0x6d7f141b6819C2c9CC2f818e6ad549E7Ca090F8f",
 };
 
 export const CHAIN_IDS_TO_TOKEN_MESSENGER: Record<number, Hex | string> = {
@@ -59,6 +63,8 @@ export const CHAIN_IDS_TO_TOKEN_MESSENGER: Record<number, Hex | string> = {
     "0x8fe6b999dc680ccfdd5bf7eb0974218be2542daa",
   [SupportedChainId.SOLANA_DEVNET]:
     "CCTPV2vPZJS2u2BBsUoscuikbYjnpFmbFsvVuJdgUMQe",
+  [SupportedChainId.CODEX_TESTNET]:
+    "0x8fe6b999dc680ccfdd5bf7eb0974218be2542daa",
 };
 
 export const CHAIN_IDS_TO_MESSAGE_TRANSMITTER: Record<number, Hex | string> = {
@@ -76,6 +82,8 @@ export const CHAIN_IDS_TO_MESSAGE_TRANSMITTER: Record<number, Hex | string> = {
     "0xe737e5cebeeba77efe34d4aa090756590b1ce275",
   [SupportedChainId.SOLANA_DEVNET]:
     "CCTPV2Sm4AdWt5296sk4P66VBZ7bEhcARwFaaS9YPbeC",
+  [SupportedChainId.CODEX_TESTNET]:
+    "0xe737e5cebeeba77efe34d4aa090756590b1ce275",
 };
 
 export const DESTINATION_DOMAINS: Record<number, number> = {
@@ -88,6 +96,7 @@ export const DESTINATION_DOMAINS: Record<number, number> = {
   [SupportedChainId.WORLDCHAIN_SEPOLIA]: 14,
   [SupportedChainId.OPTIMISM_SEPOLIA]: 2,
   [SupportedChainId.SOLANA_DEVNET]: 5,
+  [SupportedChainId.CODEX_TESTNET]: 12,
 };
 
 export const SUPPORTED_CHAINS = [
@@ -100,6 +109,7 @@ export const SUPPORTED_CHAINS = [
   SupportedChainId.WORLDCHAIN_SEPOLIA,
   SupportedChainId.OPTIMISM_SEPOLIA,
   SupportedChainId.SOLANA_DEVNET,
+  SupportedChainId.CODEX_TESTNET,
 ];
 
 // Solana RPC endpoint

@@ -64,6 +64,29 @@ import { getBytes } from "ethers";
 import { SystemProgram } from "@solana/web3.js";
 import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
 
+// Custom Codex chain definition with Thirdweb RPC
+const codexTestnet = defineChain({
+  id: 812242,
+  name: "Codex Testnet",
+  nativeCurrency: {
+    decimals: 18,
+    name: "Codex",
+    symbol: "CDX",
+  },
+  rpcUrls: {
+    default: {
+      http: ["https://812242.rpc.thirdweb.com"],
+    },
+  },
+  blockExplorers: {
+    default: {
+      name: "Codex Explorer",
+      url: "https://codex.blockscout.com",
+    },
+  },
+  testnet: true,
+});
+
 export type TransferStep =
   | "idle"
   | "approving"
@@ -82,6 +105,7 @@ const chains = {
   [SupportedChainId.ARBITRUM_SEPOLIA]: arbitrumSepolia,
   [SupportedChainId.WORLDCHAIN_SEPOLIA]: worldchainSepolia,
   [SupportedChainId.OPTIMISM_SEPOLIA]: optimismSepolia,
+  [SupportedChainId.CODEX_TESTNET]: codexTestnet,
 };
 
 // Solana RPC endpoint imported from chains.ts

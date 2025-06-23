@@ -10,6 +10,7 @@ This sample application demonstrates Cross-Chain Transfer Protocol (CCTP) step-b
 - Worldchain Sepolia
 - Optimism Sepolia
 - Solana Devnet
+- Codex Testnet
 
 ## Environment Setup
 
