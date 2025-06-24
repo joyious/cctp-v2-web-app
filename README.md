@@ -11,6 +11,8 @@ This sample application demonstrates Cross-Chain Transfer Protocol (CCTP) step-b
 - Optimism Sepolia
 - Solana Devnet
 - Codex Testnet
+- Unichain Sepolia
+- Polygon PoS Amoy
 
 ## Environment Setup
 

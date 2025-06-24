@@ -10,6 +10,8 @@ export enum SupportedChainId {
   OPTIMISM_SEPOLIA = 11155420,
   SOLANA_DEVNET = 103,
   CODEX_TESTNET = 812242,
+  UNICHAIN_SEPOLIA = 1301,
+  POLYGON_AMOY = 80002,
 }
 
 export const CHAIN_TO_CHAIN_NAME: Record<number, string> = {
@@ -23,13 +25,14 @@ export const CHAIN_TO_CHAIN_NAME: Record<number, string> = {
   [SupportedChainId.OPTIMISM_SEPOLIA]: "Optimism Sepolia",
   [SupportedChainId.SOLANA_DEVNET]: "Solana Devnet",
   [SupportedChainId.CODEX_TESTNET]: "Codex Testnet",
+  [SupportedChainId.UNICHAIN_SEPOLIA]: "Unichain Sepolia",
+  [SupportedChainId.POLYGON_AMOY]: "Polygon Amoy",
 };
 
 export const CHAIN_IDS_TO_USDC_ADDRESSES: Record<number, string> = {
   [SupportedChainId.ETH_SEPOLIA]: "0x1c7d4b196cb0c7b01d743fbc6116a902379c7238",
   [SupportedChainId.AVAX_FUJI]: "0x5425890298aed601595a70AB815c96711a31Bc65",
   [SupportedChainId.BASE_SEPOLIA]: "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
-  [SupportedChainId.MATIC_AMOY]: "0x41e94eb019c0762f9bfcf9fb1e58725bfb0e7582",
   [SupportedChainId.SONIC_BLAZE]: "0xA4879Fed32Ecbef99399e5cbC247E533421C4eC6",
   [SupportedChainId.LINEA_SEPOLIA]:
     "0xFEce4462D57bD51A6A552365A011b95f0E16d9B7",
@@ -43,6 +46,9 @@ export const CHAIN_IDS_TO_USDC_ADDRESSES: Record<number, string> = {
     "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
   [SupportedChainId.CODEX_TESTNET]:
     "0x6d7f141b6819C2c9CC2f818e6ad549E7Ca090F8f",
+  [SupportedChainId.UNICHAIN_SEPOLIA]:
+    "0x31d0220469e10c4E71834a79b1f276d740d3768F",
+  [SupportedChainId.POLYGON_AMOY]: "0x41E94Eb019C0762f9Bfcf9Fb1E58725BfB0e7582",
 };
 
 export const CHAIN_IDS_TO_TOKEN_MESSENGER_ADDRESSES: Record<number, string> = {
@@ -62,6 +68,9 @@ export const CHAIN_IDS_TO_TOKEN_MESSENGER_ADDRESSES: Record<number, string> = {
     "CCTPV2vPZJS2u2BBsUoscuikbYjnpFmbFsvVuJdgUMQe",
   [SupportedChainId.CODEX_TESTNET]:
     "0x8fe6b999dc680ccfdd5bf7eb0974218be2542daa",
+  [SupportedChainId.UNICHAIN_SEPOLIA]:
+    "0x8fe6b999dc680ccfdd5bf7eb0974218be2542daa",
+  [SupportedChainId.POLYGON_AMOY]: "0x8fe6b999dc680ccfdd5bf7eb0974218be2542daa",
 };
 
 export const CHAIN_IDS_TO_MESSAGE_TRANSMITTER_ADDRESSES: Record<
@@ -84,13 +93,15 @@ export const CHAIN_IDS_TO_MESSAGE_TRANSMITTER_ADDRESSES: Record<
     "CCTPV2Sm4AdWt5296sk4P66VBZ7bEhcARwFaaS9YPbeC",
   [SupportedChainId.CODEX_TESTNET]:
     "0xe737e5cebeeba77efe34d4aa090756590b1ce275",
+  [SupportedChainId.UNICHAIN_SEPOLIA]:
+    "0xe737e5cebeeba77efe34d4aa090756590b1ce275",
+  [SupportedChainId.POLYGON_AMOY]: "0xe737e5cebeeba77efe34d4aa090756590b1ce275",
 };
 
 export const DESTINATION_DOMAINS: Record<number, number> = {
   [SupportedChainId.ETH_SEPOLIA]: 0,
   [SupportedChainId.AVAX_FUJI]: 1,
   [SupportedChainId.BASE_SEPOLIA]: 6,
-  [SupportedChainId.MATIC_AMOY]: 7,
   [SupportedChainId.SONIC_BLAZE]: 13,
   [SupportedChainId.LINEA_SEPOLIA]: 11,
   [SupportedChainId.ARBITRUM_SEPOLIA]: 3,
@@ -98,4 +109,6 @@ export const DESTINATION_DOMAINS: Record<number, number> = {
   [SupportedChainId.OPTIMISM_SEPOLIA]: 2,
   [SupportedChainId.SOLANA_DEVNET]: 5,
   [SupportedChainId.CODEX_TESTNET]: 12,
+  [SupportedChainId.UNICHAIN_SEPOLIA]: 10,
+  [SupportedChainId.POLYGON_AMOY]: 7,
 };

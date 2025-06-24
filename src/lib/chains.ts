@@ -11,6 +11,8 @@ export enum SupportedChainId {
   OPTIMISM_SEPOLIA = 11155420,
   SOLANA_DEVNET = 103,
   CODEX_TESTNET = 812242,
+  UNICHAIN_SEPOLIA = 1301,
+  POLYGON_AMOY = 80002,
 }
 
 export const DEFAULT_MAX_FEE = 1000n;
@@ -27,6 +29,8 @@ export const CHAIN_TO_CHAIN_NAME: Record<number, string> = {
   [SupportedChainId.OPTIMISM_SEPOLIA]: "Optimism Sepolia",
   [SupportedChainId.SOLANA_DEVNET]: "Solana Devnet",
   [SupportedChainId.CODEX_TESTNET]: "Codex Testnet",
+  [SupportedChainId.UNICHAIN_SEPOLIA]: "Unichain Sepolia",
+  [SupportedChainId.POLYGON_AMOY]: "Polygon Amoy",
 };
 
 export const CHAIN_IDS_TO_USDC_ADDRESSES: Record<number, Hex | string> = {
@@ -46,6 +50,9 @@ export const CHAIN_IDS_TO_USDC_ADDRESSES: Record<number, Hex | string> = {
     "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
   [SupportedChainId.CODEX_TESTNET]:
     "0x6d7f141b6819C2c9CC2f818e6ad549E7Ca090F8f",
+  [SupportedChainId.UNICHAIN_SEPOLIA]:
+    "0x31d0220469e10c4E71834a79b1f276d740d3768F",
+  [SupportedChainId.POLYGON_AMOY]: "0x41E94Eb019C0762f9Bfcf9Fb1E58725BfB0e7582",
 };
 
 export const CHAIN_IDS_TO_TOKEN_MESSENGER: Record<number, Hex | string> = {
@@ -65,6 +72,9 @@ export const CHAIN_IDS_TO_TOKEN_MESSENGER: Record<number, Hex | string> = {
     "CCTPV2vPZJS2u2BBsUoscuikbYjnpFmbFsvVuJdgUMQe",
   [SupportedChainId.CODEX_TESTNET]:
     "0x8fe6b999dc680ccfdd5bf7eb0974218be2542daa",
+  [SupportedChainId.UNICHAIN_SEPOLIA]:
+    "0x8fe6b999dc680ccfdd5bf7eb0974218be2542daa",
+  [SupportedChainId.POLYGON_AMOY]: "0x8fe6b999dc680ccfdd5bf7eb0974218be2542daa",
 };
 
 export const CHAIN_IDS_TO_MESSAGE_TRANSMITTER: Record<number, Hex | string> = {
@@ -84,6 +94,9 @@ export const CHAIN_IDS_TO_MESSAGE_TRANSMITTER: Record<number, Hex | string> = {
     "CCTPV2Sm4AdWt5296sk4P66VBZ7bEhcARwFaaS9YPbeC",
   [SupportedChainId.CODEX_TESTNET]:
     "0xe737e5cebeeba77efe34d4aa090756590b1ce275",
+  [SupportedChainId.UNICHAIN_SEPOLIA]:
+    "0xe737e5cebeeba77efe34d4aa090756590b1ce275",
+  [SupportedChainId.POLYGON_AMOY]: "0xe737e5cebeeba77efe34d4aa090756590b1ce275",
 };
 
 export const DESTINATION_DOMAINS: Record<number, number> = {
@@ -97,6 +110,8 @@ export const DESTINATION_DOMAINS: Record<number, number> = {
   [SupportedChainId.OPTIMISM_SEPOLIA]: 2,
   [SupportedChainId.SOLANA_DEVNET]: 5,
   [SupportedChainId.CODEX_TESTNET]: 12,
+  [SupportedChainId.UNICHAIN_SEPOLIA]: 10,
+  [SupportedChainId.POLYGON_AMOY]: 7,
 };
 
 export const SUPPORTED_CHAINS = [
@@ -110,6 +125,8 @@ export const SUPPORTED_CHAINS = [
   SupportedChainId.OPTIMISM_SEPOLIA,
   SupportedChainId.SOLANA_DEVNET,
   SupportedChainId.CODEX_TESTNET,
+  SupportedChainId.UNICHAIN_SEPOLIA,
+  SupportedChainId.POLYGON_AMOY,
 ];
 
 // Solana RPC endpoint
