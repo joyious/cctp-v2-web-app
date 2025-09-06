@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useCrossChainTransfer } from "@/hooks/use-cross-chain-transfer";
+import { useWalletCrossChainTransfer } from "@/hooks/use-wallet-cross-chain-transfer";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
@@ -23,10 +23,20 @@ import { ProgressSteps } from "@/components/progress-step";
 import { TransferLog } from "@/components/transfer-log";
 import { Timer } from "@/components/timer";
 import { TransferTypeSelector } from "@/components/transfer-type";
+import { WalletConnect } from "@/components/wallet-connect";
 
 export default function Home() {
-  const { currentStep, logs, error, executeTransfer, getBalance, reset } =
-    useCrossChainTransfer();
+  const { 
+    currentStep, 
+    logs, 
+    error, 
+    executeTransfer, 
+    getBalance, 
+    reset,
+    isConnected,
+    address,
+    chainId 
+  } = useWalletCrossChainTransfer();
   const [sourceChain, setSourceChain] = useState<SupportedChainId>(
     SupportedChainId.ETH_SEPOLIA,
   );
@@ -41,6 +51,11 @@ export default function Home() {
   const [balance, setBalance] = useState("0");
 
   const handleStartTransfer = async () => {
+    if (!isConnected) {
+      setError("Please connect your wallet first");
+      return;
+    }
+
     setIsTransferring(true);
     setShowFinalTime(false);
     setElapsedSeconds(0);
@@ -49,7 +64,6 @@ export default function Home() {
         sourceChain,
         destinationChain,
         amount,
-        transferType,
       );
     } catch (error) {
       console.error("Transfer failed:", error);
@@ -88,6 +102,19 @@ export default function Home() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
+          {!isConnected && (
+            <WalletConnect />
+          )}
+          
+          {isConnected && (
+            <div className="text-center text-sm text-green-600">
+              Connected: {address?.slice(0, 6)}...{address?.slice(-4)}
+              {chainId && ` (${CHAIN_TO_CHAIN_NAME[chainId as SupportedChainId] || 'Unknown'})`}
+            </div>
+          )}
+          
+          {isConnected && (
+            <>
           <div className="space-y-2">
             <Label>Transfer Type</Label>
             <TransferTypeSelector
@@ -196,6 +223,8 @@ export default function Home() {
               </Button>
             )}
           </div>
+            </>
+          )}
         </CardContent>
       </Card>
     </div>
